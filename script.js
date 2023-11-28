@@ -4,14 +4,16 @@ const question = document.querySelector(".question");
 const gif = document.querySelector(".gif");
 const yesBtn = document.querySelector(".yes-btn");
 const noBtn = document.querySelector(".no-btn");
-const spotifyPlayer = document.getElementById("spotify-player");
+const audio = document.querySelector("audio");
+// const spotifyPlayer = document.getElementById("spotify-player");
 
 noBtn.addEventListener("click", () => {
   greeting.innerHTML = "";
   question.innerHTML = "Aw Nancy you're no fun ;(";
-  gif.src =
-    "https://media.giphy.com/media/XdD5od5914CxSq3q69/giphy.gif";
-  spotifyPlayer.src = "https://open.spotify.com/embed/track/66HNv8qd9jr7q5P9nNTOOZ";
+  gif.src = "https://media.giphy.com/media/XdD5od5914CxSq3q69/giphy.gif";
+  audio.src = "mitsuha.mp3";
+  audio.play();
+  // spotifyPlayer.src = "https://open.spotify.com/embed/track/66HNv8qd9jr7q5P9nNTOOZ";
 });
 
 yesBtn.addEventListener("mouseover", () => {
@@ -30,7 +32,9 @@ window.carterIsSoCool = function() {
   greeting.innerHTML = "Happy early Easter!";
   question.innerHTML = "Yay, see you on Friday!";
   gif.src = "https://media.giphy.com/media/3o6Ei00MRU2WnGpcGI/giphy.gif";
-  spotifyPlayer.src = "https://open.spotify.com/embed/track/7gXXJ5dDfswRXGg19q3N6h";
+  audio.src = "cat_chase.mp3";
+  audio.play();
+  // spotifyPlayer.src = "https://open.spotify.com/embed/track/7gXXJ5dDfswRXGg19q3N6h";
 };
 
 yesBtn.addEventListener("click", window.carterIsSoCool)
@@ -39,5 +43,19 @@ yesBtn.addEventListener("click", () => {
   question.innerHTML = "Yay, see you on Friday!";
   gif.src =
     "https://media.giphy.com/media/3o6Ei00MRU2WnGpcGI/giphy.gif";
-  spotifyPlayer.src = "https://open.spotify.com/embed/track/7gXXJ5dDfswRXGg19q3N6h";
+  // spotifyPlayer.src = "https://open.spotify.com/embed/track/7gXXJ5dDfswRXGg19q3N6h";
+});
+
+window.addEventListener("click", function playAudio() {
+  const audio = document.querySelector("audio");
+  if (audio) {
+    audio.volume = 0.2;
+    audio.play()
+      .then(() => {
+      })
+      .catch((error) => {
+        console.error("Audio playback failed:", error);
+      });
+  }
+  window.removeEventListener("click", playAudio);
 });
